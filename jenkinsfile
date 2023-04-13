@@ -4,13 +4,13 @@ pipeline {
         stage ("Check www.evga.com response code") {
             steps{
                 sh  '''                    
-                    CODE=$(curl -o /dev/null -s -w %{http_code} www.evga.com)                    
-                    
-                    if [ "${CODE}" != "200" ]; then
-                      echo "return not 200"
-					else
-					  eche "retur 200"
-                    fi                
+                    CODE=$(curl -o /dev/null -s -w %{http_code} https://www.evga.com)                    
+                    if [ "${CODE}" = "200" ]; then
+                        message="success"
+                    else
+                        message="fail"         
+					fi
+                    echo ${message}        
                 '''
             }
         }
