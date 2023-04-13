@@ -4,7 +4,7 @@ pipeline {
         stage ("Check www.evga.com response code") {
             steps{
                 sh  '''                    
-                    CODE=$(curl -o /dev/null -s -w %{http_code} https://www.evga.com)                    
+                    CODE=$(curl -o /dev/null -s -w %{http_code} www.example.com)                    
                     if [ "${CODE}" = "200" ]; then
                         message="success"
                     else
